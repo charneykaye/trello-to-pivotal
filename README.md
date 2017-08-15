@@ -1,6 +1,10 @@
 # Trello to Pivotal
 
-Migrate a project from Trello (JSON export) to Pivotal Tracker (CSV import)
+I love Trello for small projects. I love Pivotal Tracker for large projects.
+
+I don't always migrate a small project that becomes a large project, from Trello to Pivotal Tracker, but when I do, I need it converted properly, including all attachments, labels, checklists, and links back to the original Trello tickets.
+
+Towards that end, this tiny piece of software is used to properly migrate a project from Trello (JSON export) to Pivotal Tracker (CSV import).
 
 ## Trello
 
@@ -102,6 +106,7 @@ The main Pivotal Tracker CSV columns this program outputs are:
   - Labels
   - Current State
   - Created at
+  - Estimate
   
 A pair of Task/Status columns are output for each task (up to the maximum number allocated for the whole board):
 
@@ -111,7 +116,6 @@ A pair of Task/Status columns are output for each task (up to the maximum number
 The following columns are not output:
 
   - Accepted at
-  - Estimate
   - Requested By
   - Owned By
   - Comment
