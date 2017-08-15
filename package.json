@@ -1,0 +1,28 @@
+{
+  "name": "trello-to-pivotal",
+  "version": "1.0.0",
+  "description": "\tMigrate a project from Trello (JSON export) to Pivotal Tracker (CSV import)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charneykaye/trello-to-pivotal.git"
+  },
+  "keywords": [
+    "Trello",
+    "JSON",
+    "Export",
+    "Pivotal",
+    "Tracker",
+    "CSV",
+    "Import"
+  ],
+  "author": "Charney Kaye",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/charneykaye/trello-to-pivotal/issues"
+  },
+  "homepage": "https://github.com/charneykaye/trello-to-pivotal#readme"
+}
