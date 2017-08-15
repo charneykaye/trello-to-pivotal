@@ -2,7 +2,7 @@
   "name": "trello-to-pivotal",
   "version": "1.0.0",
   "description": "\tMigrate a project from Trello (JSON export) to Pivotal Tracker (CSV import)",
-  "main": "index.js",
+  "main": "trello2pivotal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
