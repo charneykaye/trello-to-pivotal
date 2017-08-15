@@ -21,6 +21,10 @@ I am exporting a board from Trello, to import it into Pivotal Tracker. In order 
 
 Towards that end, this tiny piece of software is used to properly migrate a project from Trello (JSON export) to Pivotal Tracker (CSV import).
 
+Clone this project to your computer. It's a [NodeJS](https://nodejs.org/) project. Before running, it's necessary to install Node packages:
+
+    npm install
+
 Use it like this:
 
     node main.js ~/Desktop/trello-xj-dev.json ~/Desktop/pivotal-tracker-xj-dev.csv
