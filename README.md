@@ -1,2 +1,3 @@
-# trello-json-to-csv
-Parse a Trello board output as JSON, and export a CSV
+# Trello to Pivotal
+
+Migrate a project from Trello (JSON export) to Pivotal Tracker (CSV import)
