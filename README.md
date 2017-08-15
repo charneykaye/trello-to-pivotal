@@ -106,6 +106,7 @@ The main Pivotal Tracker CSV columns this program outputs are:
   - Labels
   - Current State
   - Created at
+  - Accepted at
   - Estimate
   
 A pair of Task/Status columns are output for each task (up to the maximum number allocated for the whole board):
@@ -115,7 +116,6 @@ A pair of Task/Status columns are output for each task (up to the maximum number
   
 The following columns are not output:
 
-  - Accepted at
   - Requested By
   - Owned By
   - Comment
