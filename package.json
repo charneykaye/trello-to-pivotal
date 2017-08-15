@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/charneykaye/trello-to-pivotal/issues"
   },
-  "homepage": "https://github.com/charneykaye/trello-to-pivotal#readme"
+  "homepage": "https://github.com/charneykaye/trello-to-pivotal#readme",
+  "dependencies": {
+    "csv-write-stream": "^2.0.0"
+  }
 }
