@@ -6,5 +6,5 @@ try {
     app.run();
 } catch (err) {
     console.error("Error!", err,"\n");
-    console.log("Usage:\n\n    trello2pivotal  /path/to/this.json  /path/to/target.csv\n");
+    console.log("Usage:\n\n    trello2pivotal  /path/to/source.json  /path/to/target.csv\n");
 }

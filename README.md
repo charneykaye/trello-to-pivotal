@@ -2,9 +2,66 @@
 
 I love Trello for small projects. I love Pivotal Tracker for large projects.
 
-I don't always migrate a small project that becomes a large project, from Trello to Pivotal Tracker, but when I do, I need it converted properly, including all attachments, labels, checklists, and links back to the original Trello tickets.
+I don't always migrate a small project that becomes a large project, from Trello to Pivotal Tracker, but when I do, I need it done right.
+
+I am exporting a board from Trello, to import it into Pivotal Tracker. In order to get the full detail out of Trello, it's necessary to export as JSON. In order to import that detail into Pivotal Tracker .CSV, it's necessary to apply logic using some intermediary software:
+
+  - Descriptions include links to the original Trello card attachments, and links back to the original Trello tickets.
+  - Tasks based on the original Trello card checklists, and task status from the state of each original checklist item
+  - Labels based on the original Trello card labels
+  - Current State based on what list the original Trello card was in, e.g.:
+    - Trello card was in "done" or "released" list -- Pivotal issue is Accepted
+    - Trello card was in a closed list -- Pivotal issue is Accepted
+    - Trello card was in "review" list -- Pivotal issue is Delivered
+    - Trello card was in "active" list -- Pivotal issue is Started
+    - Trello card was in "ready" list -- Pivotal issue is Unstarted
+    - Trello card was in "backlog" or "icebox" list -- Pivotal issue is Unscheduled
+    - Pivotal issue of type Chore can only have the following states: unscheduled, unstarted, started, accepted
+  - Created At / Accepted At based on the current state to interpret original Trello card date 
 
 Towards that end, this tiny piece of software is used to properly migrate a project from Trello (JSON export) to Pivotal Tracker (CSV import).
+
+Use it like this:
+
+    node main.js ~/Desktop/trello-xj-dev.json ~/Desktop/pivotal-tracker-xj-dev.csv
+
+The file will be written to the target path, and the console will show info:
+
+    -=[ trello2pivotal ]=-
+    
+    Did read 1551527 bytes from Trello .JSON file: /home/charney/Escritorio/trello-xj-dev.json
+    
+    Did parse Trello board from JSON.
+    
+    Trello Board Details:
+      id: 584216b0f0e1aac6bff4cf36
+      name: (xj) Dev
+      desc: 
+      idOrganization: 51cae57290af3e3e0b001662
+      url: https://trello.com/b/qAcPeNUj/xj-dev
+      memberships(2)
+      shortLink: qAcPeNUj
+      dateLastActivity: 2017-08-15T01:01:46.540Z
+      dateLastView: 2017-08-15T02:00:55.013Z
+      shortUrl: https://trello.com/b/qAcPeNUj
+      actions(1000)
+      cards(397)
+      labels(8)
+      lists(25)
+      members(2)
+      checklists(89)
+    
+    Did cache 89 checklists.
+    
+    Did cache 8 labels.
+    
+    Did cache 25 lists.
+    
+    Will allocate 31 Task/Status column pairs.
+    
+    Will allocate 70 column names for CSV file.
+    
+    Wrote 397 rows to CSV file.
 
 ## Trello
 
@@ -58,6 +115,15 @@ Following is an (abbreviated, for relevance) member object of the `checklists` a
 
 Checklists are cached, for reference later, to generate tasks.
     
+### Lists
+
+Following is an (abbreviated, for relevance) member object of the `lists` array:
+
+    {
+      "name": "Icebox",
+      "closed": false,
+    },  
+    
 ### Labels    
 
 Following is an (abbreviated, for relevance) member object of the `labels` array:
@@ -82,6 +148,7 @@ Following is an (abbreviated, for relevance) member object of the `cards` array:
           "url": "https://trello-attachments.s3.amazonaws.com/584216b0f0e1aac6bff4cf36/592709c099c813d8035cf53c/56da9cbf0f05088e8b6bf51b241f606b/IMG_20170525_135441.jpg",
         }
       ],
+      "idList": "59036b4f07cf3aa3ab5acb83",
       "idLabels": [
         "584216b084e677fd3697e7b8"
       ],
