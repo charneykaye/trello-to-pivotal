@@ -4,12 +4,122 @@ Migrate a project from Trello (JSON export) to Pivotal Tracker (CSV import)
 
 ## Trello
 
- 
+### Board
+
+The Trello board output JSON contains these top-level keys:
+
+    id
+    name
+    desc 
+    idOrganization
+    url
+    memberships
+    shortLink
+    dateLastActivity
+    dateLastView
+    shortUrl
+    actions
+    cards
+    labels
+    lists
+    members
+    checklists
+
+### Checklists
+
+Following is an (abbreviated, for relevance) member object of the `checklists` array:
+
+    {
+      "id": "58421d010fddd404de7d274a",
+      "name": "User Types",
+      "checkItems": [
+        {
+          "state": "incomplete",
+          "name": "**Admin** to administrate the platform.",
+        },
+        {
+          "state": "incomplete",
+          "name": "**Writer** to create content.",
+        },
+        {
+          "state": "incomplete",
+          "name": "**Viewer** by default.",
+        },
+        {
+          "state": "incomplete",
+          "name": "**Producer** to fabricate continuous music.",
+        }
+      ]
+    }
+
+Checklists are cached, for reference later, to generate tasks.
+    
+### Labels    
+
+Following is an (abbreviated, for relevance) member object of the `labels` array:
+    
+    {
+      "id": "584216b084e677fd3697e7b9",
+      "name": "Fire",
+    }    
+
+### Cards
+
+Following is an (abbreviated, for relevance) member object of the `cards` array:
+
+    {
+      "name": "Tooltips introduce users to features",
+      "desc": "https://v4-alpha.getbootstrap.com/components/tooltips/",
+      "closed": false,
+      "dateLastActivity": "2017-07-29T23:15:51.850Z",
+      "url": "https://trello.com/c/zE0ADNIG/251-tooltips-introduce-users-to-features",
+      "attachments": [
+        {
+          "url": "https://trello-attachments.s3.amazonaws.com/584216b0f0e1aac6bff4cf36/592709c099c813d8035cf53c/56da9cbf0f05088e8b6bf51b241f606b/IMG_20170525_135441.jpg",
+        }
+      ],
+      "idLabels": [
+        "584216b084e677fd3697e7b8"
+      ],
+      "idChecklists": [
+        "591dc98f304901c7a3866954"
+      ]
+    },
+    
+The `idLabels` array references cached labels by `id`.   
+
+The `idChecklists` array references cached checklists by `id`.   
+
 ## Pivotal Tracker
 
 ### Field Names for CSV Data
 
-From https://www.pivotaltracker.com/help/articles/csv_import_export/ 
+The main Pivotal Tracker CSV columns this program outputs are:
+
+  - Title
+  - Type
+  - Description
+  - Labels
+  - Current State
+  - Created at
+  
+A pair of Task/Status columns are output for each task (up to the maximum number allocated for the whole board):
+
+  - Task1
+  - Task1 Status
+  
+The following columns are not output:
+
+  - Accepted at
+  - Estimate
+  - Requested By
+  - Owned By
+  - Comment
+  - Deadline
+  - Blocker
+  - Blocker Status
+   
+Following is a table of details about all the available columns for import to Pivotal Tracker via CSV: 
 
 |Column Header|Content|Possible values or restrictions|
 |--- |--- |--- |
@@ -29,3 +139,5 @@ From https://www.pivotaltracker.com/help/articles/csv_import_export/
 |Deadline|A deadline date that can be added to a story of type “release”|The story must be of type release. Future dates are allowed.|
 |Blocker|Information about something blocking a story, can include a link to another story|For example: “blocked by #9999999”|
 |Blocker Status|The current status of the blocker|“blocked” or “resolved”|
+
+Source: https://www.pivotaltracker.com/help/articles/csv_import_export/ 
