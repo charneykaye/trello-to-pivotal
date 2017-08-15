@@ -7,6 +7,10 @@ Migrate a project from Trello (JSON export) to Pivotal Tracker (CSV import)
  
 ## Pivotal Tracker
 
+### Field Names for CSV Data
+
+From https://www.pivotaltracker.com/help/articles/csv_import_export/ 
+
 |Column Header|Content|Possible values or restrictions|
 |--- |--- |--- |
 |Title|The title of the story|There is a 5,000-character limit. This is the only required column (except when importing epics, in which case both the “Title” and “Type” columns are required).|
